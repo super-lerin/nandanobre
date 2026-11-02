@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanda Nobre | Acompanhante VIP em Colatina - ES</title>
+    
     <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://super-lerin.github.io/nandanobre//"> <!-- Altere para o domínio oficial -->
+    <meta property="og:url" content="https://super-lerin.github.io/nandanobre/">
     <meta property="og:title" content="Nanda Nobre | Acompanhante VIP em Colatina - ES">
     <meta property="og:description" content="Atendimento exclusivo, reservado e sem frescuras. Confira fotos, valores e agende seu horário via WhatsApp com total discrição.">
     <meta property="og:image" content="https://static.garotacomlocal.com/wp-content/uploads/2023/04/nanda-nobre-05-11-25.jpeg">
@@ -14,10 +18,11 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://super-lerin.github.io/nandanobre/"> <!-- Altere para o domínio oficial -->
+    <meta name="twitter:url" content="https://super-lerin.github.io/nandanobre/">
     <meta name="twitter:title" content="Nanda Nobre | Acompanhante VIP em Colatina - ES">
     <meta name="twitter:description" content="Atendimento exclusivo, reservado e sem frescuras. Confira fotos, valores e agende seu horário via WhatsApp.">
     <meta name="twitter:image" content="https://static.garotacomlocal.com/wp-content/uploads/2023/04/nanda-nobre-05-11-25.jpeg">
+
     <!-- Fontes e Ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,8 +41,8 @@
             --whatsapp-hover: #1da851;
             
             --bg-dark: #0d0d11;
-            --bg-card: #16161e;
-            --bg-card-hover: #1e1e29;
+            --bg-card: rgba(22, 22, 30, 0.75); /* Vidro fosco base */
+            --bg-card-hover: rgba(30, 30, 41, 0.85);
             --border-color: #2a2a3a;
             
             --text-main: #f4f4f7;
@@ -45,7 +50,7 @@
             --text-highlight: #ff65a3;
             
             --font-main: 'Poppins', sans-serif;
-            --transition-fast: all 0.3s ease;
+            --transition-fast: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
@@ -284,7 +289,7 @@
         }
 
         /* ==========================================
-           4. SEÇÃO DE BENEFÍCIOS / DIFERENCIAIS
+           4. SEÇÃO DE BENEFÍCIOS (COM OS NOVOS RECURSOS)
            ========================================== */
         .benefits {
             padding: 80px 0;
@@ -297,25 +302,34 @@
             gap: 25px;
         }
 
+        /* CARD AVANÇADO: Glassmorphism + Borda Gradiente + Glow + Barra Inferior */
         .benefit-card {
+            position: relative;
             background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            padding: 30px 25px;
+            padding: 35px 25px 30px;
             border-radius: 16px;
             text-align: center;
+            overflow: hidden;
             transition: var(--transition-fast);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
+        /* Efeito de Borda Brilhante Dinâmica e Elevação no Hover */
         .benefit-card:hover {
             transform: translateY(-8px);
             border-color: var(--primary-color);
             background: var(--bg-card-hover);
+            box-shadow: 0 15px 35px rgba(190, 39, 105, 0.25);
         }
 
+        /* Micro-interação no Ícone (Escala e Rotação 3D sutil) */
         .benefit-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(190, 39, 105, 0.1);
+            width: 65px;
+            height: 65px;
+            background: rgba(190, 39, 105, 0.12);
             color: var(--primary-color);
             border-radius: 50%;
             display: flex;
@@ -323,16 +337,41 @@
             justify-content: center;
             font-size: 1.5rem;
             margin: 0 auto 20px;
+            transition: var(--transition-fast);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.12) rotate(6deg);
+            background: rgba(190, 39, 105, 0.25);
+            color: var(--text-highlight);
+            box-shadow: 0 0 20px rgba(190, 39, 105, 0.4);
         }
 
         .benefit-card h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
+            color: #fff;
         }
 
         .benefit-card p {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        /* Barra de Progresso/Destaque Inferior Animada no Hover */
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--text-highlight));
+            transition: width 0.4s ease-in-out;
+        }
+
+        .benefit-card:hover::after {
+            width: 100%;
         }
 
         /* ==========================================
@@ -344,6 +383,7 @@
 
         .about-box {
             background: var(--bg-card);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 40px;
@@ -382,13 +422,32 @@
             color: var(--whatsapp-green);
         }
 
+        /* PRICING CARD COM RIBBON FLUTUANTE (DESTAQUE) */
         .pricing-card {
+            position: relative;
             background: linear-gradient(145deg, #1f1f2e, #14141d);
             border: 1px solid var(--primary-color);
-            padding: 30px;
+            padding: 35px 30px 30px;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(190, 39, 105, 0.15);
+            box-shadow: 0 10px 25px rgba(190, 39, 105, 0.2);
+            overflow: hidden;
+        }
+
+        /* Fita / Ribbon "Mais Procurado" */
+        .pricing-ribbon {
+            position: absolute;
+            top: 15px;
+            right: -32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 5px 35px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .pricing-card h4 {
@@ -466,10 +525,17 @@
 
         .testimonial-card {
             background: var(--bg-card);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             padding: 25px;
             border-radius: 16px;
             position: relative;
+            transition: var(--transition-fast);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
         }
 
         .testimonial-header {
@@ -671,7 +737,7 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Menu responsivo pode ser expandido conforme necessidade */
+                display: none;
             }
 
             .section-title {
@@ -733,7 +799,7 @@
         </div>
     </section>
 
-    <!-- BENEFÍCIOS E DIFERENCIAIS -->
+    <!-- BENEFÍCIOS E DIFERENCIAIS (COM OS RECURSOS ESPECIAIS) -->
     <section id="beneficios" class="benefits">
         <div class="container">
             <h2 class="section-title">Por que escolher meu <span>Atendimento?</span></h2>
@@ -790,7 +856,9 @@
                     </div>
                 </div>
 
+                <!-- CARD DE PREÇOS COM RIBBON (DESTAQUE) -->
                 <div class="pricing-card">
+                    <div class="pricing-ribbon">Mais Procurado</div>
                     <h4>Investimento / Cachê</h4>
                     <div class="price-option">
                         <span class="price-time">30 Minutos</span>
@@ -945,7 +1013,6 @@
 
     <!-- SCRIPTS JS -->
     <script>
-        // Efeito de animação suave na rolagem (Intersection Observer)
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
                 threshold: 0.1
